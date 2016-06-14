@@ -1,0 +1,34 @@
+i have created 2 tables users and relationship
+in the relationship i have created action_user which specifies the id of user who has performed latest update
+
+the status between the two are given by:
+
+Code	Meaning
+0	Pending
+1	Accepted
+2	Declined
+3	Blocked
+
+1)Sending a new friend request.
+INSERT INTO `relationship` (`user_one_id`, `user_two_id`, `status`, `action_user_id`)
+VALUES (1, 2, 0, 1)
+
+2)users can post articles
+
+INSERT INTO users(posts)
+VALUES ('i am a user posting articles');
+
+
+user_one_id is the first user 
+user_two_id is the second user
+
+3) Friends list
+
+SELECT * FROM `relationship`
+WHERE (`user_one_id` = 1 OR `user_two_id` = 1)
+AND `status` = 1
+
+
+4)Friend request sent by the user
+SELECT * FROM `relationship`
+WHERE `user_one_id` = 1 AND `user_two_id` = 7
